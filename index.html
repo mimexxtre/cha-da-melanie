@@ -38,6 +38,8 @@
       overflow: hidden;
     }
 
+    .intro-bee img{width:clamp(90px,12vw,160px);height:auto;display:block;}
+
     .intro-bee {
       position: absolute;
       left: -120px;
@@ -386,11 +388,13 @@
       backdrop-filter: blur(8px);
     }
 
-    h1 {
-      margin: 18px 0 10px;
-      font-size: clamp(42px, 7vw, 82px);
-      color: #9c6a00;
-      line-height: 1;
+    h1 { display:none; }
+
+    .logo-main{
+      width:min(520px,90vw);
+      margin:22px auto 10px;
+      display:block;
+      filter: drop-shadow(0 12px 28px rgba(180,140,30,0.18));
     }
 
     .subtitle {
@@ -447,6 +451,18 @@
       margin-top: 26px;
     }
 
+    .card::before{
+      content:"";
+      position:absolute;
+      width:42px;
+      height:42px;
+      right:16px;
+      bottom:16px;
+      background:url('abelha.png') no-repeat center/contain;
+      opacity:0.18;
+      pointer-events:none;
+    }
+
     .card {
       background: rgba(255, 255, 255, 0.88);
       border-radius: 26px;
@@ -499,6 +515,18 @@
       padding: 16px;
       margin-bottom: 18px;
       color: #725a2f;
+    }
+
+    .button::after{
+      content:"";
+      position:absolute;
+      left:12px;
+      bottom:-6px;
+      width:28px;
+      height:28px;
+      background:url('abelha.png') no-repeat center/contain;
+      opacity:0.15;
+      pointer-events:none;
     }
 
     .button {
@@ -675,7 +703,7 @@
       <span style="left:72%; top:8%; animation-delay: 5.6s; font-size:28px;">🍯</span>
       <span style="left:80%; top:10%; animation-delay: 5.9s; font-size:22px;">🍯</span>
     </div>
-    <div class="intro-bee">🐝</div>
+    <div class="intro-bee"><img src="abelha.png" alt="Abelhinha" /></div>
     <div class="speech speech-1">Se você está aqui, sabe que a Melanie está chegando!!</div>
     <div class="speech speech-2">Mas como uma abelhinha eu já a chamo de Mel =)</div>
   </div>
@@ -691,7 +719,7 @@
   <main class="container">
     <section class="hero">
       <div class="kicker">Chá de Bebê</div>
-      <h1>Melanie</h1>
+      <img src="cha-da-melanie.png" alt="Chá da Melanie" class="logo-main" />
       <p class="subtitle">
         Nossa pequena <strong>Mel</strong> está chegando para deixar tudo mais doce, leve,
         florido e cheio de amor. 🐝🍯🌸
