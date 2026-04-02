@@ -769,6 +769,23 @@
       </p>
     </section>
 
+    <section class="photos-section" style="margin-top:32px; text-align:center;">
+      <a href="#" class="button photos-button" id="photosButton" style="max-width:420px; display:inline-block;">Veja as fotos do chá aqui!!</a>
+    </section>
+
+    <div id="beePopup" style="position:fixed; inset:0; background:rgba(0,0,0,0.28); display:none; align-items:center; justify-content:center; z-index:40; padding:20px;">
+      <div style="position:relative; max-width:520px; width:100%; background:linear-gradient(135deg, #fffdf7, #ffeef5); border:2px solid rgba(255,205,80,0.45); border-radius:28px; padding:28px 22px 22px; box-shadow:0 22px 50px rgba(0,0,0,0.18); text-align:center;">
+        <button id="closeBeePopup" aria-label="Fechar" style="position:absolute; top:10px; right:12px; border:none; background:transparent; font-size:28px; cursor:pointer; color:#8a6500;">×</button>
+        <div style="display:flex; align-items:center; justify-content:center; gap:14px; margin-bottom:14px; flex-wrap:wrap;">
+          <img src="abelha.png" alt="Abelhinha" style="width:88px; height:auto;" />
+          <div style="position:relative; background:white; border:2px solid rgba(255,205,80,0.45); border-radius:24px; padding:18px 18px; color:#7a5600; font-weight:bold; line-height:1.5; box-shadow:0 12px 28px rgba(144,104,12,0.12);">
+            O chá ainda não aconteceu, volte depois para ver as fotos!
+            <span style="position:absolute; left:22px; bottom:-12px; width:20px; height:20px; background:white; border-right:2px solid rgba(255,205,80,0.45); border-bottom:2px solid rgba(255,205,80,0.45); transform:rotate(45deg);"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <footer>
       Feito com amor para o chá de bebê da Melanie 💛🐝
     </footer>
@@ -803,6 +820,36 @@ setTimeout(()=>{
 setTimeout(() => {
       if (intro) intro.setAttribute('aria-hidden', 'true');
     }, 7600);
+  </script>
+  <script>
+    const photosButton = document.getElementById('photosButton');
+    const beePopup = document.getElementById('beePopup');
+    const closeBeePopup = document.getElementById('closeBeePopup');
+
+    if (photosButton) {
+      photosButton.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (beePopup) beePopup.style.display = 'flex';
+      });
+    }
+
+    if (closeBeePopup) {
+      closeBeePopup.addEventListener('click', function () {
+        if (beePopup) beePopup.style.display = 'none';
+      });
+    }
+
+    if (beePopup) {
+      beePopup.addEventListener('click', function (event) {
+        if (event.target === beePopup) beePopup.style.display = 'none';
+      });
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && beePopup) {
+        beePopup.style.display = 'none';
+      }
+    });
   </script>
 </body>
 </html>
