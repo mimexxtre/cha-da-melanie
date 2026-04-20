@@ -786,6 +786,14 @@
       </div>
     </div>
 
+    <section class="countdown-section" style="margin-top:34px; text-align:center;">
+      <div style="max-width:760px; margin:0 auto; background:linear-gradient(135deg, rgba(255,242,188,0.88), rgba(255,223,234,0.92)); border:1px solid rgba(255,213,110,0.34); border-radius:28px; padding:28px 22px; box-shadow:0 18px 45px rgba(150,115,31,0.11);">
+        <p style="margin:0; font-size:14px; letter-spacing:0.14em; text-transform:uppercase; font-weight:bold; color:#a36d00;">Contagem doce da Mel</p>
+        <h3 style="margin:12px 0 8px; font-size:clamp(26px,4vw,38px); color:#8f5f00;">Faltam <span id="countdownText">carregando...</span> para a provável chegada da Melanie 👶</h3>
+        <p style="margin:0; color:#6c5937; line-height:1.6;">Cada dia a menos é mais um passinho para conhecer nossa pequena abelhinha. 💛🐝</p>
+      </div>
+    </section>
+
     <footer>
       Feito com amor para o chá de bebê da Melanie 💛🐝
     </footer>
@@ -844,6 +852,32 @@ setTimeout(() => {
         if (event.target === beePopup) beePopup.style.display = 'none';
       });
     }
+
+    function updateCountdown() {
+      const countdownText = document.getElementById('countdownText');
+      if (!countdownText) return;
+
+      const targetDate = new Date('2026-06-23T11:00:00');
+      const now = new Date();
+      const diff = targetDate.getTime() - now.getTime();
+
+      if (diff <= 0) {
+        countdownText.textContent = 'a Mel chegou!';
+        return;
+      }
+
+      const totalHours = Math.floor(diff / (1000 * 60 * 60));
+      const days = Math.floor(totalHours / 24);
+      const hours = totalHours % 24;
+
+      const dayLabel = days === 1 ? 'dia' : 'dias';
+      const hourLabel = hours === 1 ? 'hora' : 'horas';
+
+      countdownText.textContent = `${days} ${dayLabel} e ${hours} ${hourLabel}`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
 
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && beePopup) {
