@@ -84,14 +84,18 @@
       animation: trailReveal 1.8s ease 0.4s forwards;
     }
 
-    .intro-hearts, .intro-flowers, .intro-honey-drops {
+    .intro-hearts,
+    .intro-flowers,
+    .intro-honey-drops {
       position: absolute;
       inset: 0;
       pointer-events: none;
       z-index: 0;
     }
 
-    .intro-hearts span, .intro-flowers span, .intro-honey-drops span {
+    .intro-hearts span,
+    .intro-flowers span,
+    .intro-honey-drops span {
       position: absolute;
       opacity: 0;
     }
@@ -219,7 +223,12 @@
       border: 1px solid rgba(255, 208, 83, 0.35);
     }
 
-    .flowers { margin-top: 18px; font-size: 24px; letter-spacing: 8px; opacity: 0.8; }
+    .flowers {
+      margin-top: 18px;
+      font-size: 24px;
+      letter-spacing: 8px;
+      opacity: 0.8;
+    }
 
     .links-section {
       display: grid;
@@ -299,6 +308,9 @@
       box-shadow: 0 12px 28px rgba(214, 161, 37, 0.22);
       position: relative;
       overflow: hidden;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
     }
 
     .button::before {
@@ -353,7 +365,8 @@
       backdrop-filter: blur(2px);
     }
 
-    .message, .countdown-card {
+    .message,
+    .countdown-card {
       margin-top: 36px;
       background: linear-gradient(135deg, rgba(255, 242, 188, 0.86), rgba(255, 223, 234, 0.9));
       border-radius: 30px;
@@ -363,13 +376,15 @@
       border: 1px solid rgba(255, 213, 110, 0.34);
     }
 
-    .message h3, .countdown-card h3 {
+    .message h3,
+    .countdown-card h3 {
       margin: 0 0 12px;
       font-size: clamp(28px, 4vw, 44px);
       color: #8f5f00;
     }
 
-    .message p, .countdown-card p {
+    .message p,
+    .countdown-card p {
       max-width: 760px;
       margin: 0 auto;
       line-height: 1.7;
@@ -384,6 +399,74 @@
       text-transform: uppercase;
       font-weight: bold;
       color: #a36d00;
+    }
+
+    .why-name-section {
+      margin-top: 24px;
+      text-align: center;
+    }
+
+    .name-popup-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(70, 45, 5, 0.35);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 60;
+      padding: 20px;
+    }
+
+    .name-popup-overlay.open {
+      display: flex;
+    }
+
+    .name-popup-box {
+      position: relative;
+      max-width: 720px;
+      width: 100%;
+      background: linear-gradient(135deg, #fffdf7, #ffeef5);
+      border: 2px solid rgba(255, 205, 80, 0.45);
+      border-radius: 30px;
+      padding: 30px 24px;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .name-popup-box::after {
+      content: "";
+      position: absolute;
+      right: 20px;
+      bottom: 18px;
+      width: 58px;
+      height: 58px;
+      background: url('abelha.png') no-repeat center/contain;
+      opacity: 0.15;
+      pointer-events: none;
+    }
+
+    .name-popup-close {
+      position: absolute;
+      top: 12px;
+      right: 16px;
+      border: none;
+      background: transparent;
+      font-size: 30px;
+      cursor: pointer;
+      color: #8a6500;
+    }
+
+    .name-popup-title {
+      margin: 0 0 16px;
+      font-size: clamp(28px, 4vw, 42px);
+      color: #8f5f00;
+    }
+
+    .name-popup-text {
+      margin: 0;
+      color: #6c5937;
+      line-height: 1.75;
+      font-size: 18px;
     }
 
     footer {
@@ -465,7 +548,10 @@
       body::before { font-size: 160px; }
       .hero { padding-top: 34px; }
       .card { padding: 22px; }
-      .message p, .countdown-card p { font-size: 16px; }
+      .message p,
+      .countdown-card p,
+      .name-popup-text { font-size: 16px; }
+      .name-popup-box { padding: 28px 18px; }
       .intro-bee {
         top: 72%;
         left: 50%;
@@ -524,7 +610,7 @@
       <div class="kicker">Chá de Bebê</div>
       <img src="cha-da-melanie.png" alt="Chá da Melanie" class="logo-main" />
       <p class="subtitle">
-        Nossa pequena <strong>Mel</strong>  está chegando para deixar tudo mais doce, leve,
+        Nossa pequena <strong>Mel</strong> está chegando para deixar tudo mais doce, leve,
         florido e cheio de amor. 🐝🍯🌸
       </p>
       <div class="tags">
@@ -558,9 +644,9 @@
     </section>
 
     <section class="message" id="mainMessage">
-      <h3>A Mel veio para adoçar nossas vidas</h3>
+      <h3>A Mel está vindo para adoçar nossas vidas</h3>
       <p>
-        Obrigado por fazer parte desse momento tão especial. Cada gesto de carinho, cada lembrança e cada presente ajudaram a tornar a chegada da nossa pequena Melanie ainda mais bonita, doce e inesquecível. Mas o mais importante é a presença e o apoio de todos para a chegada da Melanie.
+        Obrigado por fazer parte desse momento tão especial. Cada gesto de carinho, cada lembrança e cada presente ajudam a tornar a chegada da nossa pequena Melanie ainda mais bonita, doce e inesquecível. Mas o mais importante é a presença e o apoio de todos para a chegada da Melanie.
       </p>
     </section>
 
@@ -571,8 +657,33 @@
     <section class="countdown-card">
       <p class="countdown-label">Contagem doce da Mel</p>
       <h3><span id="countdownText">Carregando...</span> 👶</h3>
-      <p>Cada memória desse dia é mais um pedacinho doce da chegada da nossa pequena abelhinha. 💛🐝</p>
+      <p>Cada dia a menos é mais um passinho para conhecer nossa pequena abelhinha. 💛🐝</p>
     </section>
+
+    <section class="why-name-section">
+      <button class="button" id="whyNameButton" type="button" style="max-width:420px;">
+        Mas por que Melanie?
+      </button>
+    </section>
+
+    <div class="name-popup-overlay" id="namePopup" aria-hidden="true">
+      <div class="name-popup-box">
+        <button class="name-popup-close" id="closeNamePopup" aria-label="Fechar">×</button>
+        <h3 class="name-popup-title">Mas por que Melanie? 🐝</h3>
+        <p class="name-popup-text">
+          <strong>
+            Melanie vem da inspiração na Mel C., das Spice Girls, uma cantora de voz poderosa
+            e presença única, que representa força, talento e autenticidade. Mas não se esqueça:
+            o nome dela será Melanie Luísa! Então já temos opções para todos os momentos:
+            <br><br>
+            Melanie quando for oficial ou for se apresentar,<br>
+            Mel quando vier de alguém que já conhece e chama com carinho,<br>
+            Melanie Luísa quando precisar dar aquela bronca…<br>
+            e Lu, só se ela mesma autorizar. 💛🐝✨
+          </strong>
+        </p>
+      </div>
+    </div>
 
     <footer>
       Feito com amor para o chá de bebê da Melanie 💛🐝
@@ -617,7 +728,7 @@
       const diff = targetDate.getTime() - now.getTime();
 
       if (diff <= 0) {
-        countdownText.textContent = 'A Mel está chegando!';
+        countdownText.textContent = 'A Mel chegou!';
         return;
       }
 
@@ -632,6 +743,40 @@
 
     updateCountdown();
     setInterval(updateCountdown, 60000);
+
+    const whyNameButton = document.getElementById('whyNameButton');
+    const namePopup = document.getElementById('namePopup');
+    const closeNamePopup = document.getElementById('closeNamePopup');
+
+    function openNamePopup() {
+      if (!namePopup) return;
+      namePopup.classList.add('open');
+      namePopup.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeNamePopupBox() {
+      if (!namePopup) return;
+      namePopup.classList.remove('open');
+      namePopup.setAttribute('aria-hidden', 'true');
+    }
+
+    if (whyNameButton) {
+      whyNameButton.addEventListener('click', openNamePopup);
+    }
+
+    if (closeNamePopup) {
+      closeNamePopup.addEventListener('click', closeNamePopupBox);
+    }
+
+    if (namePopup) {
+      namePopup.addEventListener('click', function (event) {
+        if (event.target === namePopup) closeNamePopupBox();
+      });
+    }
+
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') closeNamePopupBox();
+    });
   </script>
 </body>
 </html>
