@@ -496,6 +496,7 @@
         <span id="photoCounter">Foto 1</span>
         <div>
           <a id="downloadCurrent" href="#" download>Baixar esta foto</a>
+          <a id="shareWhatsapp" href="#" target="_blank" rel="noreferrer">Enviar pelo WhatsApp</a>
           <a id="openOriginal" href="#" target="_blank" rel="noreferrer">Abrir original</a>
           <button id="closeLightbox">Fechar ×</button>
         </div>
@@ -1077,6 +1078,7 @@
 
     const openOriginal = document.getElementById('openOriginal');
     const downloadCurrent = document.getElementById('downloadCurrent');
+    const shareWhatsapp = document.getElementById('shareWhatsapp');
     const selectedCount = document.getElementById('selectedCount');
     const downloadSelectedButton = document.getElementById('downloadSelectedButton');
     const clearSelectionButton = document.getElementById('clearSelectionButton');
@@ -1153,6 +1155,10 @@
       openOriginal.href = src;
       downloadCurrent.href = src;
       downloadCurrent.download = `cha-da-melanie-${photoFileName(currentPhoto)}`;
+      const absolutePhotoUrl = new URL(src, window.location.href).href;
+      const whatsappText = `Olha essa foto do chá da Melanie 💛🐝
+${absolutePhotoUrl}`;
+      shareWhatsapp.href = `https://wa.me/?text=${encodeURIComponent(whatsappText)}`;
       lightbox.classList.add('open');
       lightbox.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
