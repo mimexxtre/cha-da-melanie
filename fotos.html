@@ -349,6 +349,14 @@
       font-weight: bold;
     }
 
+    .lightbox-actions {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
     .lightbox-top a, .lightbox-top button {
       border: none;
       border-radius: 999px;
@@ -358,6 +366,8 @@
       font-weight: bold;
       text-decoration: none;
       cursor: pointer;
+      white-space: nowrap;
+      font-size: 14px;
     }
 
     .lightbox-img-wrap {
@@ -419,6 +429,31 @@
     }
 
     @media (max-width: 700px) {
+      .lightbox-top {
+        align-items: stretch;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .lightbox-actions {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+      }
+
+      .lightbox-top a,
+      .lightbox-top button {
+        width: 100%;
+        text-align: center;
+        padding: 10px 8px;
+        font-size: 13px;
+      }
+
+      #photoCounter {
+        text-align: center;
+        font-size: 14px;
+      }
+
       body::before { font-size: 160px; }
       .gallery { column-count: 2; column-gap: 12px; }
       .photo-card { margin-bottom: 12px; border-radius: 18px; }
@@ -494,9 +529,9 @@
     <div class="lightbox-content">
       <div class="lightbox-top">
         <span id="photoCounter">Foto 1</span>
-        <div>
-          <a id="downloadCurrent" href="#" download>Baixar esta foto</a>
-          <a id="shareWhatsapp" href="#" target="_blank" rel="noreferrer">Enviar pelo WhatsApp</a>
+        <div class="lightbox-actions">
+          <a id="downloadCurrent" href="#" download>Baixar foto</a>
+          <a id="shareWhatsapp" href="#" target="_blank" rel="noreferrer">WhatsApp</a>
           <a id="openOriginal" href="#" target="_blank" rel="noreferrer">Abrir original</a>
           <button id="closeLightbox">Fechar ×</button>
         </div>
